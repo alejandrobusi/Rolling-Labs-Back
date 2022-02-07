@@ -2,11 +2,15 @@ require('dotenv').config()
 require('../database/database')
 const express = require('express')
 const app = express()
-const users = require('../routes/users')
-const products = require('../routes/products')
-const login = require('../routes/login')
 const purchases = require('../routes/purchases')
+const mercadopago = require("mercadopago");
 const port = process.env.PORT
+
+const mercadoPagoPublicKey = process.env.MERCADO_PAGO_SAMPLE_PUBLIC_KEY;
+
+const mercadoPagoAccessToken = process.env.MERCADO_PAGO_SAMPLE_ACCESS_TOKEN;
+
+mercadopago.configurations.setAccessToken(mercadoPagoAccessToken);
 
 
 app.use(express.json())
@@ -18,9 +22,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/', users)
-app.use('/', login)
-app.use('/', products)
 app.use('/', purchases)
 
 app.listen(port, () => console.log(`listening to the port : ${port}`))
