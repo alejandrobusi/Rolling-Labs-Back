@@ -3,14 +3,7 @@ require('../database/database')
 const express = require('express')
 const app = express()
 const purchases = require('../routes/purchases')
-const mercadopago = require("mercadopago");
 const port = process.env.PORT
-
-const mercadoPagoPublicKey = process.env.MERCADO_PAGO_SAMPLE_PUBLIC_KEY;
-
-const mercadoPagoAccessToken = process.env.MERCADO_PAGO_SAMPLE_ACCESS_TOKEN;
-
-mercadopago.configurations.setAccessToken(mercadoPagoAccessToken);
 
 
 app.use(express.json())
