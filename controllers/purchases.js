@@ -1,5 +1,5 @@
 const Purchase = require('../models/purchases')
-
+//comm
 const createPurchase = async( req,res ) => {
   
   try {
